@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/mainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ArchivoBlack-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/main.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mainMenuFont.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="mainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+mainScene = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -180.0
+margin_right = 320.0
+margin_bottom = 180.0
+theme = SubResource( 2 )
+text = "Keyboard Mimic"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.5
+margin_top = -114.0
+margin_right = 88.5
+margin_bottom = -10.0
+custom_constants/separation = 20
+
+[node name="playButton" type="Button" parent="VBoxContainer"]
+margin_right = 177.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+text = "Make"
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 177.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+text = "Play"
+
+[connection signal="pressed" from="VBoxContainer/playButton" to="." method="_on_playButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quitButton_pressed"]
